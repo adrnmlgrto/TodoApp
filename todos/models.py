@@ -14,6 +14,7 @@ class Task(models.Model):
     ]
 
     task_title = models.CharField(max_length=120)
+    task_description = models.TextField(blank=True)
     category = models.CharField(max_length=3, choices=CATEGORIES, default=PERSONAL)
     is_done = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

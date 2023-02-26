@@ -1,16 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>TEXT DROPDOWN</title>
-    </head>
-    <body>
-        <div class="dropdown">
-            <button class="dropbtn">Dropdown</button>
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-            </div>
-          </div>
-    </body>
+  <head>
+    <title>Todo Web Application</title>
+  </head>
+  <body>
+    <div style="margin: 20px auto; max-width: 500px">
+      <form style="font-family: Arial, sans-serif">
+        <label for="task-name" style="font-weight: bold; display: block"
+          >Task Name:</label
+        >
+        <input
+          type="text"
+          id="task-name"
+          name="task-name"
+          style="
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            width: 100%;
+          "
+        /><br />
+
+        <label for="description" style="font-weight: bold; display: block"
+          >Description:</label
+        >
+        <textarea
+          id="description"
+          name="description"
+          style="
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            width: 100%;
+          "
+        ></textarea
+        ><br />
+
+        <label for="category" style="font-weight: bold; display: block"
+          >Category:</label
+        >
+        <select
+          id="category"
+          name="category"
+          style="
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            width: 100%;
+          "
+        >
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+          <option value="school">School</option></select
+        ><br />
+
+        <input
+          type="submit"
+          value="Submit"
+          style="
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+          "
+        />
+      </form>
+    </div>
+  </body>
 </html>
