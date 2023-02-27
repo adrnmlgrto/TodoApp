@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo Web Application - Add Task</title>
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'index' %}">Go Back</a>
+    </nav>
+    <div style="margin: 20px auto; max-width: 500px">
+      <form action="#" method="POST">
+        <label for="task-name">Task Name:</label>
+        <input type="text" id="task-name" name="task-name"><br>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea><br>
+
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="School">School</option>
+        </select><br>
+
+        <label for="completed">Task Completed:</label>
+        <input type="checkbox" id="completed" name="completed"><br>
+
+        <input type="submit" value="Edit">
+      </form>
+    </div>
+  </body>
+</html>
