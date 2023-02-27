@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Todo Web Application - Add Task</title>
+    <title>Todo Web Application - Edit Task</title>
   </head>
   <body>
     <nav>
       <a href="{% url 'index' %}">Go Back</a>
     </nav>
     <div style="margin: 20px auto; max-width: 500px">
-      <form action="#" method="POST">
-        <label for="task-name">Task Name:</label>
-        <input type="text" id="task-name" name="task-name"><br>
+      <form action="{% url 'modify_task' task.id %}" method="POST">
+        {% csrf_token %}
+        <label for="task_title">Task Name:</label>
+        <input type="text" id="task_title" name="task_title", value="{{ task.task_title }}"><br>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea><br>
+        <label for="task_description">Description:</label>
+        <textarea id="task_description" name="task_description">{{ task.task_description }}</textarea><br>
 
         <label for="category">Category:</label>
         <select id="category" name="category">
-          <option value="Personal">Personal</option>
+          {% if task.category == 'PSL' %}
+          <option value="Personal" selected>Personal</option>
           <option value="Work">Work</option>
           <option value="School">School</option>
+
+          {% elif task.category == 'WRK' %}
+          <option value="Personal">Personal</option>
+          <option value="Work" selected>Work</option>
+          <option value="School">School</option>
+
+          {% else %}
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="School" selected>School</option>
+
+          {% endif %}
         </select><br>
 
-        <label for="completed">Task Completed:</label>
-        <input type="checkbox" id="completed" name="completed"><br>
+        <!-- <label for="is_done">Task Completed:</label>
+        {% if task.is_done %}
+        <input type="checkbox" id="is_done" name="is_done" checked><br>
+        {% else %}
+        <input type="checkbox" id="is_done" name="is_done"><br>
+        {% endif %} -->
 
         <input type="submit" value="Edit">
       </form>
