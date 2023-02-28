@@ -17,6 +17,7 @@ def edit_task(request, task_id):
 
 @require_http_methods(['POST'])
 def submit_task(request):
+    # View for handling user adding new task to list
     task_title = request.POST['task_title']
     task_description = request.POST['task_description']
     category = request.POST['category']
