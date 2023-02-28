@@ -20,8 +20,7 @@ def submit_task(request):
     task_title = request.POST['task_title']
     task_description = request.POST['task_description']
     category = request.POST['category']
-    created_at = timezone.now()
-    task = Task(task_title=task_title, task_description=task_description, category=category, created_at=created_at)
+    task = Task(task_title=task_title, task_description=task_description, category=category)
     task.save()
     return redirect('index')
 
@@ -30,9 +29,12 @@ def modify_task(request, task_id):
     task = Task.objects.get(id=task_id)
     task.task_title = request.POST['task_title']
     task.task_description = request.POST['task_description']
+    task.category = request.POST['category']
+    task.is_done = bool(request.POST['is_done'])
     
     task.save()
     return redirect('index')
+
 
 def delete_task(request, task_id):
     task = Task.objects.get(id=task_id)

@@ -2,6 +2,80 @@
 <html>
   <head>
     <title>Todo Web Application - Main</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      nav {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        min-width: 160px;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px auto;
+        max-width: 1000px;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ccc;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+    </style>
   </head>
   <body>
     <nav>
@@ -16,37 +90,35 @@
         </div>
       </div>
     </nav>
-    <div style="margin: 20px auto; max-width: 500px">
-      <table style="width: 100%; border-collapse: collapse">
-        <tr style="background-color: #4caf50; color: white">
-          <th style="padding: 8px; border: 1px solid #ccc">Task Name</th>
-          <th style="padding: 8px; border: 1px solid #ccc">Description</th>
-          <th style="padding: 8px; border: 1px solid #ccc">Category</th>
-          <th style="padding: 8px; border: 1px solid #ccc">Date Created</th>
-          <th style="padding: 8px; border: 1px solid #ccc">Status</th>
-          <th style="padding: 8px; border: 1px solid #ccc"></th>
+    <table>
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Date Created</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
         </tr>
+      </thead>
+      <tbody>
         {% for task in tasks_list %}
         <tr>
-          <td style="padding: 8px; border: 1px solid #ccc">{{ task.task_title }}</td>
-          <td style="padding: 8px; border: 1px solid #ccc">
-            {{ task.task_description }}
-          </td>
-          <td style="padding: 8px; border: 1px solid #ccc">{{ task.category }}</td>
-          <td style="padding: 8px; border: 1px solid #ccc">{{ task.created_at }}</td>
+          <td>{{ task.task_title }}</td>
+          <td>{{ task.task_description }}</td>
+          <td>{{ task.category }}</td>
+          <td>{{ task.created_at }}</td>
           {% if task.is_done == False %}
-          <td style="padding: 8px; border: 1px solid #ccc">Not Done</td>
+          <td>Not Done</td>
           {% else %}
-          <td style="padding: 8px; border: 1px solid #ccc">Done</td>
+          <td>Done</td>
           {% endif %}
-          <td style="padding: 8px; border: 1px solid #ccc">
-            <a href="{% url 'edit_task' task.id %}">
-              Edit
-            </a>
-          </td>
+          <td><a href="{% url 'edit_task' task.id %}">Edit</a></td>
+          <td><a href="{% url 'delete_task' task.id %}">Delete</a></td>
         </tr>
         {% endfor %}
-      </table>
-    </div>
+      </tbody>
+    </table>
   </body>
 </html>

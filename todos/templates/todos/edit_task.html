@@ -19,29 +19,35 @@
         <label for="category">Category:</label>
         <select id="category" name="category">
           {% if task.category == 'PSL' %}
-          <option value="Personal" selected>Personal</option>
-          <option value="Work">Work</option>
-          <option value="School">School</option>
+          <option value="PSL" selected>Personal</option>
+          <option value="WRK">Work</option>
+          <option value="SCH">School</option>
 
           {% elif task.category == 'WRK' %}
-          <option value="Personal">Personal</option>
-          <option value="Work" selected>Work</option>
-          <option value="School">School</option>
+          <option value="PSL">Personal</option>
+          <option value="WRK" selected>Work</option>
+          <option value="SCH">School</option>
 
           {% else %}
-          <option value="Personal">Personal</option>
-          <option value="Work">Work</option>
-          <option value="School" selected>School</option>
+          <option value="PSL">Personal</option>
+          <option value="WRK">Work</option>
+          <option value="SCH" selected>School</option>
 
           {% endif %}
         </select><br>
 
-        <!-- <label for="is_done">Task Completed:</label>
+        <label for="is_done">Task Completed:</label>
+        <select id="is_done" name="is_done">
         {% if task.is_done %}
-        <input type="checkbox" id="is_done" name="is_done" checked><br>
+          <option value="False">Not Done</option>
+          <option value="True" selected>Done</option>
         {% else %}
-        <input type="checkbox" id="is_done" name="is_done"><br>
-        {% endif %} -->
+          <option value="False" selected>Not Done</option>
+          <option value="True">Done</option>
+        {% endif %}
+        </select><br>
+
+
 
         <input type="submit" value="Edit">
       </form>
