@@ -27,7 +27,7 @@ def submit_task(request):
 
 @require_http_methods(['POST'])
 def modify_task(request, task_id):
-    # View for updating task in /edit 
+    # View for updating task in /edits
     task = Task.objects.get(id=task_id)
     task.task_title = request.POST['task_title']
     task.task_description = request.POST['task_description']
