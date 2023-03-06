@@ -5,14 +5,16 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def task_list(request, format=None):
     # Get all Tasks | Serialize | Return JSON
     if request.method == 'GET':
         tasks = Task.objects.all()
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
-
+    
+@api_view(['POST'])
+def task_create(request, format=None):
     if request.method == 'POST':
         serializer = TaskSerializer(data=request.data)
         if serializer.is_valid():
