@@ -3,8 +3,10 @@ from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    path('tasks/', views.task_list, name='task_list'),
-    path('tasks/<int:id>', views.task_detail, name='task_detail'),
+    path('tasks/', views.task_list, name='task_list_view'),
+    path('tasks/new/', views.task_list, name='task_list_create'),
+    path('tasks/<int:id>/', views.task_detail, name='task_detail'),
+    
 
     # path('', views.index, name='index'),
     # path('create/', views.add_task, name='add_task'),
